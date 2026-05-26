@@ -1,1 +1,19 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  height="30px"
+  viewBox="0 -960 960 960"
+  width="30px"
+>
+  <defs>
+    <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffcc80"/>
+      <stop offset="50%" stop-color="#8c452f"/>
+      <stop offset="100%" stop-color="#832609"/>
+    </linearGradient>
+  </defs>
 
+  <path
+    fill="url(#arrowGradient)"
+    d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"
+  />
+</svg>
