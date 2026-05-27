@@ -1354,7 +1354,7 @@
 
     <!--END NEWSLETTER-->
 
-    <a class="footer-email notranslate" href="mailto:hello.ondas@gmail.com" translate="no">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon">
+    <a class="footer-email notranslate" href="mailto:reply.ondas@gmail.com" translate="no">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon">
 </a>
   </div>
 
@@ -1635,7 +1635,7 @@
             if (error.code === '23505') {
               console.warn('[Newsletter] Already subscribed:', val);
             } else {
-              console.error('[Newsletter] Insert error:', error.message, error);
+              console.error('[Newsletter] Insert error:', error.message, error.code);
             }
           } else {
             console.log('[Newsletter] Subscribed:', val);
