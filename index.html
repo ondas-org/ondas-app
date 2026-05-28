@@ -1642,7 +1642,10 @@
             try {
               await fetch('https://huwwsuxvehhiwpvwgqzy.supabase.co/functions/v1/send-welcome-email', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                  'Content-Type': 'application/json',
+                  'apikey': SUPABASE_KEY
+                },
                 body: JSON.stringify({ email: val })
               });
               console.log('[Newsletter] Welcome email sent:', val);
