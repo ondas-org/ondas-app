@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>ONDAS</title>
-
+<title>ONDAS — The Screenwriter's Editor</title>
 <meta name="description" content="A screenwriting editor. No installs, no friction, no cost. A blank page and whatever story you’ve been putting off.">
 <meta property="og:title" content="ONDAS — The Screenwriter's Editor">
 <meta property="og:description" content="No installs, no friction, no cost. Open a script and start writing.">
@@ -14,8 +13,6 @@
 <meta name="twitter:title" content="ONDAS — The Screenwriter's Editor">
 <meta name="twitter:description" content="No installs, no friction, no cost. Open a script and start writing.">
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,800;0,900;1,400;1,500&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1354,7 +1351,7 @@
 
     <!--END NEWSLETTER-->
 
-    <a class="footer-email notranslate" href="mailto:reply.ondas@gmail.com" translate="no">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon">
+    <a class="footer-email notranslate" href="mailto:hello.ondas@gmail.com" translate="no">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon">
 </a>
   </div>
 
@@ -1392,7 +1389,7 @@
     <a class="footer-back-top" href="#hero">Back to top <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></a>
     <div class="footer-right">
       <span>Copyright © 2026 ONDAS — made by Macy Veil</span>
-      <span>v1.5 · Crispy Cookie — Early access. Still being built.</span>
+      <span>v1.5 · Crispy Cookie</span>
     </div>
   </div>
 
@@ -1629,30 +1626,13 @@
         try {
           const { error } = await supabaseClient
             .from('newsletter_users')
-            .insert({ email: val, subscribed: true });
+            .upsert({ email: val, subscribed: true }, { onConflict: 'email' });
 
           if (error) {
-            if (error.code === '23505') {
-              console.warn('[Newsletter] Already subscribed:', val);
+              console.error('[Newsletter] Upsert error:', error.message, error);
             } else {
-              console.error('[Newsletter] Insert error:', error.message, error.code);
+              console.log('[Newsletter] Subscribed:', val);
             }
-          } else {
-            console.log('[Newsletter] Subscribed:', val);
-            try {
-              await fetch('https://huwwsuxvehhiwpvwgqzy.supabase.co/functions/v1/send-welcome-email', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'apikey': SUPABASE_KEY
-                },
-                body: JSON.stringify({ email: val })
-              });
-              console.log('[Newsletter] Welcome email sent:', val);
-            } catch (emailErr) {
-              console.error('[Newsletter] Email error:', emailErr);
-            }
-          }
         } catch (err) {
           console.error('[Newsletter] Network error:', err);
         }
