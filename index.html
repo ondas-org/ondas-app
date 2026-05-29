@@ -1630,7 +1630,7 @@
 
           if (error) {
             if (error.code === '23505') {
-              // Already exists — just reactivate, no welcome email
+              // Already exists — reactivate
               await supabaseClient
                 .from('newsletter_users')
                 .update({ subscribed: true })
@@ -1638,10 +1638,22 @@
               console.log('[Newsletter] Re-subscribed:', val);
             } else {
               console.error('[Newsletter] Insert error:', error.message, error);
+              return;
             }
           } else {
             console.log('[Newsletter] Subscribed:', val);
           }
+
+          // Call Edge Function directly — does not depend on any DB webhook
+          const { error: fnError } = await supabaseClient.functions.invoke('send-welcome-email', {
+            body: { email: val }
+          });
+          if (fnError) {
+            console.error('[Newsletter] Email function error:', fnError);
+          } else {
+            console.log('[Newsletter] Welcome email sent to:', val);
+          }
+
         } catch (err) {
           console.error('[Newsletter] Network error:', err);
         }
