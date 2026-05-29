@@ -1626,13 +1626,26 @@
         try {
           const { error } = await supabaseClient
             .from('newsletter_users')
-            .upsert({ email: val, subscribed: true }, { onConflict: 'email' });
+            .insert({ email: val, subscribed: true });
 
           if (error) {
-              console.error('[Newsletter] Upsert error:', error.message, error);
+            if (error.code === '23505') {
+              // Email exists — reactivate it
+              const { error: updateError } = await supabaseClient
+                .from('newsletter_users')
+                .update({ subscribed: true })
+                .eq('email', val);
+              if (updateError) {
+                console.error('[Newsletter] Re-subscribe error:', updateError.message);
+              } else {
+                console.log('[Newsletter] Re-subscribed:', val);
+              }
             } else {
-              console.log('[Newsletter] Subscribed:', val);
+              console.error('[Newsletter] Insert error:', error.message, error);
             }
+          } else {
+            console.log('[Newsletter] Subscribed:', val);
+          }
         } catch (err) {
           console.error('[Newsletter] Network error:', err);
         }
