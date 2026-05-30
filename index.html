@@ -12,8 +12,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ONDAS — The Screenwriter's Editor">
 <meta name="twitter:description" content="No installs, no friction, no cost. Open a script and start writing.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +24,7 @@
 
   html { scroll-behavior: smooth; }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --bg: #030303;
@@ -178,11 +174,7 @@
     color: transparent;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 42px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 42px; list-style: none; }
 
   .nav-links a {
     font-size: 0.75rem;
@@ -323,9 +315,7 @@
     pointer-events: none;
   }
 
-  .btn-primary:hover::before {
-    transform: translateX(100%);
-  }
+  .btn-primary:hover::before { transform: translateX(100%); }
 
   .btn-primary:hover {
     border-color: rgba(255,255,245,0.5);
@@ -356,10 +346,7 @@
     transition: background 0.4s var(--ease-apple), transform 0.4s var(--ease-spring);
   }
 
-  .btn-primary:hover .btn-primary-arrow {
-    background: var(--accent);
-    transform: translateX(3px);
-  }
+  .btn-primary:hover .btn-primary-arrow { background: var(--accent); transform: translateX(3px); }
 
   .btn-primary-arrow svg { width: 22px; fill: none; stroke: #030303; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -418,13 +405,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 80px;
   }
-
   .about-label { font-size: 0.6rem; letter-spacing: 0.28em; color: var(--mono); margin-bottom: 40px; text-transform: uppercase; }
-
   .about-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 4.5vw, 4.5rem); font-weight: 500; line-height: 1.1; font-style: italic; }
-
   .about-body { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; line-height: 1.9; color: var(--white-dim); margin-bottom: 32px; }
-
   .about-stat-row {
     display: flex;
     gap: 48px;
@@ -432,9 +415,9 @@
     padding-top: 28px;
     border-top: 1px solid var(--glass-border);
   }
+  .about-ember{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.72rem;font-style:italic;letter-spacing:.02em;line-height:1.7;color:rgba(255,255,255,.35);margin-top:-16px;margin-bottom:32px;display:block}
 
   .stat-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--white); }
-
   .stat-label { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--mono); margin-top: 8px; text-transform: uppercase; }
 
   #features { padding: 0 48px 140px; }
@@ -449,12 +432,7 @@
   }
 
   .features-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.5rem); font-weight: 500; }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 100px;
-  }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 100px; }
 
   .feature-card {
     background: var(--glass-bg);
@@ -512,7 +490,6 @@
   }
 
   .feature-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; margin-bottom: 16px; }
-
   .feature-desc { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; line-height: 1.8; color: var(--mono); }
 
   #cta-banner {
@@ -536,13 +513,11 @@
   }
 
   .cta-headline em { font-style: italic; color: var(--accent); font-weight: 500; }
-
   .cta-sub { font-family: monospace; font-size: 0.75rem; line-height: 1.7; color: var(--white-dim); max-width: 300px; text-align: right; }
 
   #workflow { padding: 40px 48px 140px; }
 
   .workflow-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 800; line-height: 1; max-width: 700px; margin-top: 24px; }
-
   .workflow-steps { margin-top: 64px; }
 
   .workflow-step {
@@ -568,17 +543,13 @@
   }
 
   .step-num { font-family: monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; }
-
   .step-name { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 500; }
-
   .step-desc { font-family: monospace; font-size: 0.7rem; line-height: 1.7; color: var(--mono); }
 
   #compare { padding: 0 48px 140px; }
 
   .compare-header { text-align: center; margin-bottom: 56px; }
-
   .compare-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.5rem); font-style: italic; }
-
   .compare-sub { font-size: 0.7rem; color: var(--mono); margin-top: 12px; }
 
   .compare-table-wrapper {
@@ -659,10 +630,10 @@
   }
 
   .arrow_out-icon {
-  width: 14px;
-  height: 14px;
-  margin-left: 4px;
-  vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    vertical-align: middle;
   }
 
   .newsletter-section {
@@ -737,7 +708,6 @@
   }
 
   .newsletter-input:focus::placeholder { color: #c0c0c0; }
-
   .newsletter-input.subscribed-msg {
     color: #555;
     font-style: italic;
@@ -799,7 +769,6 @@
   }
 
   .footer-email:hover { color: var(--white); }
-
   .footer-section { padding: 68px 0 0; }
 
   .footer-section-label {
@@ -1179,6 +1148,7 @@
   <div class="about-right">
     <p class="about-body reveal">ONDAS was built by <a class="a2" href="https://macy-veil.github.io/portfolio/">Macy Veil</a> — a screenwriter who spent too many years fighting his own tools. Final Draft crashed mid-draft. Subscription fees kept climbing. He wanted something that just worked, looked right, and stayed out of his way. So he built it himself.</p>
     <p class="about-body reveal reveal-delay-1">It runs in your browser. Open a script and start writing. Fountain syntax handles formatting as you go. When you’re done, export to PDF, Final Draft, or plain Fountain. Whatever your production needs.</p>
+    <p class="about-ember reveal reveal-delay-2">Currently in Early access. Still being built.</p>
   </div>
 </section>
 
