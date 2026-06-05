@@ -1353,8 +1353,8 @@
       <li><a href="https://x.com/ondas_software">𝕏<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
       <li><a href="subs/foundation">Foundation<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
       <li><a href="#">Suggest a feature<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="legal/privacy.html">Privacy<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="legal/terms.html">Terms of service<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="legal/privacy">Privacy<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="legal/terms">Terms of service<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
     </ul>
   </div>
 
@@ -1418,7 +1418,7 @@
       </div>
 
       <div class="lv-privacy-note">
-        <p>By continuing, you agree to the <a href="legal/terms.html">Terms of Service</a> and acknowledge ONDAS’s <a href="legal/privacy.html">Privacy Policy</a>.</p>
+        <p>By continuing, you agree to the <a href="legal/terms">Terms of Service</a> and acknowledge ONDAS’s <a href="legal/privacy">Privacy Policy</a>.</p>
       </div>
 
     </div>
@@ -1603,7 +1603,6 @@
 
           if (error) {
             if (error.code === '23505') {
-              // Already exists — reactivate
               await supabaseClient
                 .from('newsletter_users')
                 .update({ subscribed: true })
