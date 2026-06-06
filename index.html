@@ -75,7 +75,7 @@
     background: radial-gradient(circle at 30% 30%, rgba(217, 198, 176, 0.2), rgba(217, 198, 176, 0.02));
     filter: blur(70px);
     pointer-events: none;
-    z-index: 0;
+    z-index: 3;
     will-change: transform;
   }
 
@@ -212,12 +212,14 @@
   .a3 { color: #0a0a0a; }
 
   #hero {
-    position: relative;
+    position: sticky;
+    top: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow: hidden;
+    z-index: 0;
   }
 
   #hero-canvas {
@@ -363,7 +365,20 @@
     text-align: right;
   }
 
-  .marquee-wrap {
+  .page-surface {
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+  }
+
+  .hero-blur-target {
+    will-change: filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+
     background: rgba(15, 15, 18, 0.5);
     backdrop-filter: blur(16px);
     border-top: 1px solid var(--glass-border);
@@ -442,7 +457,7 @@
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    border-radius: 66px;
+    border-radius: 69px;
     padding: 36px 32px;
     transition: transform 0.5s var(--ease-spring), border-color 0.4s var(--ease-apple), background 0.4s var(--ease-apple), box-shadow 0.5s var(--ease-apple);
     will-change: transform;
@@ -450,12 +465,12 @@
 
   .feature-card:hover {
     transform: translateY(-10px) scale(1.01);
-    border-color: rgba(255,255,245,0.18);
+    border-color: rgba(255,255,255,0.18);
     background: rgba(30, 30, 36, 0.65);
     box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 0 40px rgba(217, 198, 176, 0.06);
   }
 
-  .feature-card-large { /* no longer spans 2 columns — all cards are uniform */ }
+  .feature-card-large { /*nopans 2 columns’a’cards ar’uni.*/ } /*what?*/
 
   .feature-num { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--mono); margin-bottom: 28px; font-family: monospace; }
 
@@ -1113,10 +1128,10 @@
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
     <h1 class="hero-title">
-      <span class="line" id="line1">ONDAS</span>
+      <span class="line hero-blur-target" id="line1">ONDAS</span>
     </h1>
     <div class="hero-sub">
-      <p class="hero-desc" id="hero-desc">A screenwriting editor. No installs, no friction, no cost. A blank page and whatever story you’ve been putting off.</p>
+      <p class="hero-desc hero-blur-target" id="hero-desc">A screenwriting editor. No installs, no friction, no cost. A blank page and whatever story you’ve been putting off.</p>
       <div class="hero-cta-wrap" id="hero-cta">
         <a href="#" class="btn-primary start-btn">
           <span class="btn-primary-label">Start writing</span>
@@ -1126,6 +1141,8 @@
     </div>
   </div>
 </section>
+
+<div class="page-surface">
 
 <section id="about">
   <div class="about-stat-row reveal reveal-delay-2"></div>
@@ -1288,8 +1305,7 @@
     <span class="footer-logo">ONDAS</span>
     <p class="footer-tagline"><i>Built by a writer, for writers.</i></p>
 
-    <!--NEWSLETTER SUBSCRIPTION-->
-
+    <!--NEWSLETTER--->
     <section class="newsletter-section" aria-label="Newsletter signup">
       <h2 class="newsletter-title">Keep up with us</h2>
       <p class="newsletter-desc">Get news, proposals, features, surveys, and more.</p>
@@ -1306,7 +1322,6 @@
         <button class="newsletter-btn" id="newsletterBtn" type="button">Sign Up</button>
       </div>
     </section>
-
     <!--END NEWSLETTER-->
 
     <a class="footer-email notranslate" href="mailto:reply.ondas@gmail.com" translate="no">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon">
@@ -1333,7 +1348,7 @@
   </div>
 
   <div class="footer-section">
-    <p class="footer-section-label">COMMUNITY & SUPPORT</p>
+    <p class="footer-section-label">COMMUNITY &amp; SUPPORT</p>
     <ul class="footer-nav-list">
       <li><a href="https://www.patreon.com/ondas">Patreon<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
       <li><a href="https://x.com/ondas_software">𝕏<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
@@ -1345,14 +1360,16 @@
   </div>
 
   <div class="footer-bottom">
-    <a class="footer-back-top" href="#hero">Back to top <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></a>
+    <a class="footer-back-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></a>
     <div class="footer-right">
-      <span>Copyright © 2026 ONDAS — by Macy Veil</span>
-      <span>v1.7 · Uncooked Cookie</span>
+      <span>Copyright © 2026 ONDAS</span>
+      <span>v1.8 · Uncooked Shrimp</span>
     </div>
   </div>
 
 </footer>
+
+</div>
 
 <!-- LOGIN -->
 
@@ -1411,7 +1428,6 @@
   </div>
 
 </div>
-
 <!-- END LOGIN -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -1626,7 +1642,62 @@
 
   })();
 
-  let loginAnimating = false;
+  (function () {
+    'use strict';
+
+    const clamp  = (v, lo, hi) => v < lo ? lo : v > hi ? hi : v;
+    const smooth = (t) => t * t * (3 - 2 * t);
+
+    const CFG = {
+      hero: {
+        maxBlur:       6.5,
+        exitRatio:     0.72,
+      },
+    };
+
+    const heroSection = document.getElementById('hero');
+
+    const heroBlurEls = Array.from(
+      document.querySelectorAll('.hero-blur-target')
+    );
+
+    let rafId       = null;
+    let lastScrollY = -1;
+    let lastHeroBlur = -1;
+
+    function setBlur(els, px, lastPx) {
+      if (Math.abs(px - lastPx) < 0.02) return lastPx;
+      const val = px < 0.04 ? 'none' : `blur(${px.toFixed(2)}px)`;
+      for (let i = 0; i < els.length; i++) {
+        els[i].style.filter = val;
+      }
+      return px;
+    }
+
+    function tick() {
+      rafId = null;
+      const sy = window.scrollY;
+      if (sy === lastScrollY) return;
+      lastScrollY = sy;
+
+      if (heroSection && heroBlurEls.length) {
+        const heroH  = heroSection.offsetHeight || window.innerHeight;
+        const rawT   = clamp(sy / (heroH * CFG.hero.exitRatio), 0, 1);
+        const t      = smooth(rawT);
+        const blurPx = t * CFG.hero.maxBlur;
+        lastHeroBlur = setBlur(heroBlurEls, blurPx, lastHeroBlur);
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: true });
+
+    requestAnimationFrame(tick);
+
+  }());
+
+
 
   const loginCanvas = document.getElementById('login-wave-canvas');
   const loginCtx = loginCanvas.getContext('2d');
