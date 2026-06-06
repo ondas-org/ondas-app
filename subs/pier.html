@@ -150,6 +150,31 @@ body.phase-final #guide .ch.active .ch-label { color: #000; }
 }
 body.phase-final .card-shell::before { border-color: rgba(0,0,0,0.06); }
 
+/* Apple-style gradient border: bright top edge, fades to nothing at the bottom */
+.card-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 75px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255,255,255,0.22) 0%,
+      rgba(255,255,255,0.08) 22%,
+      rgba(255,255,255,0.02) 48%,
+      transparent 68%
+    ) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 1.8s var(--ease);
+}
+body.phase-final .card-shell::after { opacity: 0; }
+
 .card {
   contain: layout paint;
   border-radius: 75px;
@@ -803,6 +828,23 @@ body.macy-veil.phase-final .pier-warning a:hover { color: rgba(255,255,255,0.9);
     .ch.active .ch-label   { font-size: 19.5px; }
     .ch.done   .ch-label   { font-size: 17px; }
   }
+
+
+#dot-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.13; }
+  40%, 60% { opacity: 0.04; }
+}
+
+
 </style>
 </head>
 <body>
@@ -812,6 +854,15 @@ body.macy-veil.phase-final .pier-warning a:hover { color: rgba(255,255,255,0.9);
 <div id="stage">
 
   <div class="screen active" id="s-email">
+    <svg id="dot-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <mask id="dot-mask">
+          <rect width="100%" height="100%" fill="white"/>
+          <rect id="dot-mask-card" rx="89" fill="black"/>
+        </mask>
+      </defs>
+      <g id="dot-group" mask="url(#dot-mask)"></g>
+    </svg>
     <button class="back-button notranslate" id="backButton" translate="no">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 -960 960 960" fill="currentColor" translate="no">
         <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/>
@@ -1488,6 +1539,67 @@ syncWrap('b-pw',   'wrap-pw');
 syncWrap('b-date', 'wrap-date');
 
 setTimeout(() => document.getElementById('i-email').focus(), 350);
+
+/* ── SVG dot grid — email screen ── */
+(function () {
+  const SPACING = 52;
+  const DOT_R   = 0.85;
+  const PAD     = 14;
+  const CARD_BR = 89;
+
+  const svg      = document.getElementById('dot-svg');
+  const group    = document.getElementById('dot-group');
+  const maskCard = document.getElementById('dot-mask-card');
+  const NS       = 'http://www.w3.org/2000/svg';
+
+  function build() {
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    /* update card mask cutout */
+    const shell = document.querySelector('#s-email .card-shell');
+    if (shell) {
+      const r = shell.getBoundingClientRect();
+      maskCard.setAttribute('x',      r.left  - PAD);
+      maskCard.setAttribute('y',      r.top   - PAD);
+      maskCard.setAttribute('width',  r.width  + PAD * 2);
+      maskCard.setAttribute('height', r.height + PAD * 2);
+    }
+
+    /* rebuild circles */
+    group.innerHTML = '';
+    const frag = document.createDocumentFragment();
+
+    for (let x = SPACING / 2; x < W; x += SPACING) {
+      for (let y = SPACING / 2; y < H; y += SPACING) {
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx',   Math.round(x));
+        c.setAttribute('cy',   Math.round(y));
+        c.setAttribute('r',    DOT_R);
+        c.setAttribute('fill', 'rgb(185,185,185)');
+
+        /* ~15% of dots pulse — slowly, subtly, unexpectedly */
+        if (Math.random() < 0.15) {
+          const dur   = (16 + Math.random() * 22).toFixed(2);   /* 16–38 s */
+          const delay = -(Math.random() * 30).toFixed(2);        /* stagger via negative delay */
+          c.style.opacity   = '0.13';
+          c.style.animation = `dot-pulse ${dur}s ${delay}s ease-in-out infinite`;
+        } else {
+          c.setAttribute('opacity', '0.13');
+        }
+
+        frag.appendChild(c);
+      }
+    }
+
+    group.appendChild(frag);
+  }
+
+  requestAnimationFrame(() => requestAnimationFrame(build));
+  window.addEventListener('resize', build);
+})();
 </script>
 
 <script>
