@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 @font-face {
-  font-family: 'LEDDotMatrix';
-  src: url('fonts/LED_Dot-Matrix_400.ttf') format('truetype');
+  font-family: 'BitcountSingle';
+  src: url('BitcountSingle.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -55,6 +55,11 @@ body::after { display: none !important; }
   flex-direction: column;
   align-items: flex-start;
   transition: opacity 0.6s var(--ease);
+}
+
+.card h1, .card .h1, .card-title, h1 {
+  font-family: 'BitcountSingle', monospace !important;
+  text-transform: uppercase;
 }
 
 .ch {
@@ -197,11 +202,11 @@ body.phase-final .card {
 }
 
 .card h1, .card .h1, .card-title, h1 {
-  font-family: 'LEDDotMatrix', monospace !important;
+  font-family: 'BitcountSingle', monospace !important;
 }
 
 .h1 {
-  font-size: clamp(21px, 2.5vw, 28px);
+  font-size: clamp(29px, 2.5vw, 29px);
   font-weight: 600;
   letter-spacing: -0.032em;
   line-height: 1.16;
