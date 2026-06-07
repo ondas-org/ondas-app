@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ONDAS — Point Nemo</title>
+<meta name="description" content="Lost at sea. Return to ONDAS.">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet">
+<style>html{scroll-behavior:smooth}*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#030303;--white:#fefaf5;--white-dim:rgba(254,250,245,.75);--white-faint:rgba(254,250,245,.12);--glass-border:rgba(255,255,255,.08);--accent:#d9c6b0;--mono:#9a958c;--ease-out-expo:cubic-bezier(.16,1,.3,1);--ease-spring:cubic-bezier(.34,1.56,.64,1);--ease-apple:cubic-bezier(.25,.46,.45,.94)}body{background:var(--bg);color:var(--white);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.4;cursor:default}::selection{background:rgba(217,198,176,.35);color:#c8b89a}body::before{content:'';position:fixed;inset:0;background-image:url("data:image/png;base64,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");background-size:128px 128px;background-repeat:repeat;pointer-events:none;z-index:999;opacity:.028;mix-blend-mode:overlay;image-rendering:pixelated}.page-404{position:sticky;top:0;height:100vh;overflow:hidden;z-index:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}#wave-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}.orb,.footer-orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}.orb{z-index:2}.orb-a{width:60vw;aspect-ratio:1;top:-18vw;left:-12vw;background:radial-gradient(circle at 40% 40%,rgba(255,255,255,.04),transparent 65%);filter:blur(60px);animation:drift1 26s ease-in-out infinite}.orb-b{width:45vw;aspect-ratio:1;bottom:10vh;right:-10vw;background:radial-gradient(circle at 50% 50%,rgba(220,222,228,.032),transparent 65%);filter:blur(80px);animation:drift2 32s ease-in-out infinite}.orb-c{width:30vw;aspect-ratio:1;top:30vh;left:30vw;background:radial-gradient(circle,rgba(200,202,210,.022),transparent 70%);filter:blur(55px);animation:drift3 20s ease-in-out infinite}@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(3vw,5vh) scale(1.05)}70%{transform:translate(-2vw,-3vh) scale(.97)}}@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}35%{transform:translate(-4vw,-6vh) scale(1.08)}65%{transform:translate(3vw,4vh) scale(.93)}}@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-4vw,-4vh) scale(1.1)}}.hero-content{position:relative;z-index:12;padding:0 72px 80px}.error-number{font-family:'Bitcount Single',monospace;font-size:clamp(9rem,20vw,18rem);font-weight:600;line-height:.88;letter-spacing:-.02em;color:var(--white);opacity:0;transform:translateY(30px);animation:fadeUp 1.1s .1s var(--ease-out-expo) forwards;user-select:none}.error-message{font-family:Helvetica,'Helvetica Neue',Arial,sans-serif;font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:400;color:var(--white-dim);max-width:480px;line-height:1.5;letter-spacing:-.01em;margin-top:38px;opacity:0;animation:fadeUp 1s .45s var(--ease-out-expo) forwards}.error-cta{margin-top:52px;opacity:0;animation:fadeUp 1s .65s var(--ease-out-expo) forwards}.return-btn{display:inline-flex;align-items:center;gap:0;text-decoration:none;transition:gap .4s var(--ease-spring)}.return-btn-label,.return-btn-ball{transition:background .4s var(--ease-spring),border-radius .4s var(--ease-spring)}.return-btn-label{background:rgba(255,255,245,.95);border:none;height:42px;padding:0 26px;border-radius:70px;font-size:.82rem;font-weight:600;letter-spacing:.02em;color:#0a0a0a;font-family:Helvetica,'Helvetica Neue',Arial,sans-serif;display:flex;align-items:center;white-space:nowrap}.return-btn-ball{width:42px;aspect-ratio:1;border-radius:50%;background:rgba(255,255,245,.95);display:flex;align-items:center;justify-content:center;color:#0a0a0a;flex-shrink:0;margin-left:-4px}.return-btn-ball .material-symbols-outlined{font-size:15px;font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;line-height:1;display:block}.return-btn:hover .return-btn-label,.return-btn:hover .return-btn-ball{background:var(--accent)}.return-btn:hover .return-btn-label{border-radius:70px 0 0 70px}.return-btn:hover .return-btn-ball{border-radius:0 70px 70px 0}@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}footer{position:relative;z-index:10;background:#000;padding:0 48px;overflow:hidden;content-visibility:auto;contain-intrinsic-size:0 800px}.footer-orb-1{width:55vw;aspect-ratio:1;top:-15vw;right:-10vw;background:radial-gradient(circle at 40% 40%,rgba(230,232,238,.06),transparent 65%);filter:blur(90px);animation:drift2 38s ease-in-out infinite}.footer-orb-2{width:40vw;aspect-ratio:1;bottom:-5vw;left:-8vw;background:radial-gradient(circle at 50% 50%,rgba(210,212,220,.05),transparent 65%);filter:blur(100px);animation:drift1 44s ease-in-out infinite}.footer-orb-3{width:25vw;aspect-ratio:1;top:40%;left:40%;background:radial-gradient(circle,rgba(240,240,248,.035),transparent 70%);filter:blur(70px);animation:drift3 28s ease-in-out infinite}.footer-brand{position:relative;padding:80px 0 64px;border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 1px 0 rgba(255,255,255,.04)}.footer-logo{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;display:block;margin-bottom:14px;background:linear-gradient(135deg,#fff,#d9c6b0);background-clip:text;-webkit-background-clip:text;color:transparent}.footer-tagline{font-family:monospace;font-size:.72rem;line-height:1.6;color:var(--mono)}.footer-email{font-family:Helvetica;margin-top:28px;font-size:.8rem;color:rgba(255,255,245,.45);text-decoration:none;transition:color .3s var(--ease-apple);display:block}.footer-email:hover{color:var(--white)}.arrow_out-icon{width:14px;height:14px;margin-left:4px;vertical-align:middle}.newsletter-section{margin:48px 0 28px;width:100%}.newsletter-title{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:10px}.newsletter-desc{font-size:.82rem;color:rgba(254,250,245,.42);margin-bottom:28px;letter-spacing:.01em;line-height:1.55}.newsletter-capsule{display:flex;align-items:center;background:#e9e9e9;border-radius:100px;padding:7px 7px 7px 28px;max-width:560px;width:100%;box-shadow:8px 8px 20px rgba(0,0,0,.18),-4px -4px 12px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.12);transition:box-shadow .45s var(--ease-apple)}.newsletter-capsule:hover{box-shadow:3px 3px 8px rgba(0,0,0,.22),-1px -1px 4px rgba(255,255,255,.05),inset 4px 4px 12px rgba(0,0,0,.14),inset -2px -2px 6px rgba(255,255,255,.1)}.newsletter-input{flex:1;background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:.82rem;color:#1a1a1a;letter-spacing:.01em;padding:10px 0;caret-color:#1a1a1a;min-width:0}.newsletter-input::placeholder{color:#aaa}.newsletter-btn{flex-shrink:0;background:#0a0a0a;color:#fefaf5;border:none;border-radius:100px;padding:13px 26px;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.04em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);transition:background .38s var(--ease-apple),color .38s var(--ease-apple);white-space:nowrap}.newsletter-btn:hover{background:#fff;color:#0a0a0a}.footer-section{padding:68px 0 0;position:relative}.footer-section-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,245,.25);padding-bottom:20px;display:block}.footer-nav-list{list-style:none}.footer-nav-list li{background-image:radial-gradient(circle,rgba(255,255,255,.25) .5px,transparent .5px);background-size:3px 1px;background-repeat:repeat-x;background-position:bottom}.footer-nav-list a{display:flex;align-items:flex-end;justify-content:space-between;padding:20px 0 14px;font-family:Helvetica,'Helvetica Neue',Arial,sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:#cfcfcf;text-decoration:none;letter-spacing:-.02em;transition:color .3s var(--ease-apple),padding-left .35s var(--ease-out-expo)}.footer-nav-list a:hover{color:var(--accent);padding-left:10px}.footer-nav-list a svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:translateX(-6px);transition:opacity .3s var(--ease-apple),transform .3s var(--ease-apple)}.footer-nav-list a:hover svg{opacity:1;transform:translateX(0)}.footer-bottom,.footer-back-top{font-family:Helvetica;font-size:.6rem;color:rgba(255,255,245,.3)}.footer-bottom{margin-top:48px;padding:28px 0;display:flex;justify-content:space-between;align-items:center;position:relative}.footer-back-top{display:flex;align-items:center;gap:7px;text-decoration:none;transition:color .3s var(--ease-apple)}.footer-back-top:hover{color:var(--white)}.footer-back-top svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.footer-right{text-align:right;display:flex;flex-direction:column;gap:5px}@media(max-width:640px){.hero-content{padding:0 28px 80px}footer{padding:0 24px}.footer-nav-list a{font-size:1.5rem}}</style>
+</head>
+<body>
+<main class="page-404">
+<canvas id="wave-canvas"></canvas>
+<div class="orb orb-a hero-blur-target"></div>
+<div class="orb orb-b hero-blur-target"></div>
+<div class="orb orb-c hero-blur-target"></div>
+<div class="hero-content hero-blur-target">
+<div class="error-number">404</div>
+<p class="error-message">Sherlock, we have a problem!<br>He’s lost at Point Nemo...</p>
+<div class="error-cta">
+<a class="return-btn" href="https://ondas.lat">
+<span class="return-btn-label">Return to the boat</span>
+<div class="return-btn-ball" translate="no"><span class="material-symbols-outlined" translate="no">arrow_forward_ios</span></div>
+</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-orb footer-orb-1"></div>
+<div class="footer-orb footer-orb-2"></div>
+<div class="footer-orb footer-orb-3"></div>
+<div class="footer-brand">
+<span class="footer-logo">ONDAS</span>
+<p class="footer-tagline"><i>Built by a writer, for writers.</i></p>
+<section class="newsletter-section" aria-label="Newsletter signup">
+<h2 class="newsletter-title">Keep up with us</h2>
+<p class="newsletter-desc">Get news, proposals, features, surveys, and more.</p>
+<div class="newsletter-capsule">
+<input class="newsletter-input" type="email" id="newsletterEmail" placeholder="Email Address*" autocomplete="email" aria-label="Email address">
+<button class="newsletter-btn" id="newsletterBtn" type="button">Sign Up</button>
+</div>
+</section>
+<a class="footer-email" href="mailto:reply.ondas@gmail.com">Contact Us<img src="icons/arrow_out.svg" alt="" class="arrow_out-icon" loading="lazy" decoding="async"></a>
+</div>
+<svg hidden aria-hidden="true"><symbol id="nav-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></symbol></svg>
+<div class="footer-section">
+<span class="footer-section-label">NAVIGATION</span>
+<ul class="footer-nav-list">
+<li><a href="/#about">About<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="/#features">Features<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="/#workflow">How it works<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="/#compare">Compare<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+</ul>
+</div>
+<div class="footer-section">
+<span class="footer-section-label">RESOURCES</span>
+<ul class="footer-nav-list">
+<li><a href="#">Shortcut list<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="#">Getting started<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="#">Roadmap<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+</ul>
+</div>
+<div class="footer-section">
+<span class="footer-section-label">COMMUNITY &amp; SUPPORT</span>
+<ul class="footer-nav-list">
+<li><a href="https://www.patreon.com/ondas">Patreon<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="https://x.com/ondas_software">𝕏<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="subs/foundation">Foundation<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="#">Suggest a feature<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="legal/privacy">Privacy<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+<li><a href="legal/terms">Terms of service<svg viewBox="0 0 24 24"><use href="#nav-arrow"/></svg></a></li>
+</ul>
+</div>
+<div class="footer-bottom">
+<a class="footer-back-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></a>
+<div class="footer-right">
+<span>Copyright © 2026 ONDAS</span>
+<span>v1.8 · Uncooked Shrimp</span>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+const canvas=document.getElementById('wave-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,t=0;
+function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight}
+resize();
+window.addEventListener('resize',resize,{passive:true});
+const TOTAL=52;
+const layers=[
+{freq:.0082,speed:.55,amp:34,phase:0},
+{freq:.0155,speed:-.78,amp:18,phase:1.3},
+{freq:.0048,speed:.38,amp:46,phase:2.6},
+{freq:.022,speed:-1.2,amp:9,phase:.7},
+{freq:.0035,speed:.22,amp:22,phase:4.1}
+];
+function draw(){
+ctx.clearRect(0,0,W,H);
+t+=.0025;
+ctx.save();
+ctx.beginPath();
+ctx.moveTo(W*.06,H);
+ctx.lineTo(W,H);
+ctx.lineTo(W,0);
+ctx.closePath();
+ctx.clip();
+const drawTo=W*1.4,onset=W*.7,tailSpan=W*.3,tailSpan2=tailSpan*tailSpan,tailW4=W*.4;
+const lc=layers.map(l=>({f:l.freq,a:l.amp,p:t*l.speed*7+l.phase}));
+for(let i=0;i<TOTAL;i++){
+const frac=i/(TOTAL-1);
+const baseAtRight=H*(1-frac*1.06);
+const baseRange=baseAtRight-H;
+const fracPhase=frac*1.9,frac28=frac*28;
+ctx.beginPath();
+for(let x=0;x<=drawTo;x+=2){
+const rampY=x<=W?H+baseRange*(x/W):baseAtRight;
+let waveOffset=0;
+for(const l of lc)waveOffset+=Math.sin(x*l.f+l.p+fracPhase)*l.a;
+const tailDamp=x>W?Math.max(0,1-(x-W)/tailW4):1;
+const xo=x-onset;
+const curve=xo>0?xo*xo/tailSpan2*frac28:0;
+const y=rampY+waveOffset*.58*tailDamp-curve;
+x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+}
+const rBottom=240,gBottom=241,bBottom=244;
+const r=Math.round(rBottom-65*frac);
+const g=Math.round(gBottom-63*frac);
+const b=Math.round(bBottom-56*frac);
+const alphaBase=frac<.12?.26-frac*.5:frac<.5?.20-frac*.14:.12-frac*.08;
+const alpha=Math.max(0,alphaBase);
+const grad=ctx.createLinearGradient(0,0,drawTo,0);
+grad.addColorStop(0,`rgba(${r},${g},${b},0)`);
+grad.addColorStop(.06,`rgba(${r},${g},${b},0)`);
+grad.addColorStop(.22,`rgba(${r},${g},${b},${(alpha*.28).toFixed(3)})`);
+grad.addColorStop(.6,`rgba(${r},${g},${b},${(alpha*.8).toFixed(3)})`);
+grad.addColorStop(.88,`rgba(${r},${g},${b},${alpha.toFixed(3)})`);
+grad.addColorStop(1,`rgba(${r},${g},${b},0)`);
+ctx.strokeStyle=grad;
+ctx.lineWidth=frac<.06?1.7:frac<.2?1.2:.8;
+ctx.stroke();
+}
+ctx.beginPath();
+ctx.moveTo(W*.06,H);
+ctx.lineTo(W,H);
+ctx.lineTo(W,H-3);
+const baseG=ctx.createLinearGradient(W*.06,0,W,0);
+baseG.addColorStop(0,'rgba(220,222,228,0)');
+baseG.addColorStop(1,'rgba(220,222,228,.10)');
+ctx.fillStyle=baseG;
+ctx.fill();
+ctx.restore();
+requestAnimationFrame(draw);
+}
+draw();
+})();
+
+(function(){
+'use strict';
+const clamp=(v,lo,hi)=>v<lo?lo:v>hi?hi:v;
+const smooth=t=>t*t*(3-2*t);
+const CFG={content:{maxBlur:6.5,exitRatio:.72},canvas:{maxBlur:14,exitRatio:.6}};
+const heroSection=document.querySelector('.page-404');
+const blurEls=Array.from(document.querySelectorAll('.hero-blur-target'));
+const waveCanvas=document.getElementById('wave-canvas');
+let rafId=null,lastScrollY=-1,lastContentBlur=-1,lastCanvasBlur=-1;
+function applyBlur(els,px,last){
+if(Math.abs(px-last)<.02)return last;
+const val=px<.04?'none':`blur(${px.toFixed(2)}px)`;
+for(let i=0;i<els.length;i++)els[i].style.filter=val;
+return px;
+}
+function tick(){
+rafId=null;
+const sy=window.scrollY;
+if(sy===lastScrollY)return;
+lastScrollY=sy;
+const heroH=(heroSection?heroSection.offsetHeight:0)||window.innerHeight;
+if(blurEls.length){
+const t=smooth(clamp(sy/(heroH*CFG.content.exitRatio),0,1));
+lastContentBlur=applyBlur(blurEls,t*CFG.content.maxBlur,lastContentBlur);
+}
+if(waveCanvas){
+const t=smooth(clamp(sy/(heroH*CFG.canvas.exitRatio),0,1));
+const px=t*CFG.canvas.maxBlur;
+if(Math.abs(px-lastCanvasBlur)>=.02){
+waveCanvas.style.filter=px<.04?'none':`blur(${px.toFixed(2)}px)`;
+lastCanvasBlur=px;
+}
+}
+}
+window.addEventListener('scroll',function(){if(!rafId)rafId=requestAnimationFrame(tick)},{passive:true});
+requestAnimationFrame(tick);
+}());
+
+(function(){
+const emailInput=document.getElementById('newsletterEmail');
+const signUpBtn=document.getElementById('newsletterBtn');
+if(!emailInput||!signUpBtn)return;
+const SUPABASE_URL='https://huwwsuxvehhiwpvwgqzy.supabase.co';
+const SUPABASE_KEY='sb_publishable_LCuEFxzVU9ZQLQkmAe4kuw_6tvJUpXp';
+let supabaseClient=null;
+if(typeof supabase!=='undefined')supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const EASE='cubic-bezier(.25,.46,.45,.94)';
+function setOpacity(val,ms){emailInput.style.transition=`opacity ${ms}ms ${EASE}`;emailInput.style.opacity=val}
+function runSuccessAnimation(){
+setOpacity('0',400);
+setTimeout(()=>{emailInput.value='';emailInput.placeholder="You're subscribed!";setOpacity('1',400)},420);
+setTimeout(()=>{setOpacity('0',380);setTimeout(()=>{emailInput.placeholder='Email Address*';setOpacity('1',380);signUpBtn.disabled=false;signUpBtn.textContent='Sign Up'},400)},2420);
+}
+let busy=false;
+async function handleSignUp(){
+if(busy)return;
+const val=emailInput.value.trim();
+if(!val||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){emailInput.focus();return}
+busy=true;
+signUpBtn.disabled=true;
+signUpBtn.textContent='...';
+runSuccessAnimation();
+setTimeout(()=>{busy=false},3300);
+if(supabaseClient){
+try{
+const{error}=await supabaseClient.from('newsletter_users').insert({email:val,subscribed:true});
+if(error&&error.code==='23505')await supabaseClient.from('newsletter_users').update({subscribed:true}).eq('email',val);
+await supabaseClient.functions.invoke('send-welcome-email',{body:{email:val}});
+}catch(err){console.error('[Newsletter] Error:',err)}
+}
+}
+signUpBtn.addEventListener('click',handleSignUp);
+emailInput.addEventListener('keydown',e=>{if(e.key==='Enter')handleSignUp()});
+}());
+</script>
+</body>
+</html>
