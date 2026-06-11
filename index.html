@@ -17,7 +17,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,800;0,900;1,400;1,500&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -722,7 +722,7 @@
   }
 
   .newsletter-title {
-    font-family: 'Inter';
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -870,11 +870,11 @@
 
   .footer-nav-list a {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     padding: 20px 0 14px;
-    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(calc(1.8rem + 9px), calc(3.5vw + 9px), calc(2.6rem + 9px));
     font-weight: 400;
     color: #cfcfcf;
     text-decoration: none;
@@ -895,6 +895,12 @@
     opacity: 0;
     transform: translateX(-6px);
     transition: opacity 0.3s var(--ease-apple), transform 0.3s var(--ease-apple);
+  }
+
+  .footer-link-label {
+    display: flex;
+    align-items: center;
+    gap: 0;
   }
 
   .footer-nav-list a:hover svg {
@@ -936,7 +942,7 @@
     .feature-card-large { grid-column: span 1; display: block; }
     #about { grid-template-columns: 1fr; gap: 40px; }
     .workflow-step { grid-template-columns: 1fr; gap: 12px; text-align: left; border-radius: 48px; }
-    .footer-nav-list a { font-size: 1.5rem; }
+    .footer-nav-list a { font-size: calc(1.5rem + 9px); }
     .hero-content { padding: 0 28px 60px; }
   }
   
@@ -1405,31 +1411,31 @@
   <div class="footer-section">
     <p class="footer-section-label">NAVIGATION</p>
     <ul class="footer-nav-list">
-      <li><a href="#about">About<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#features">Features<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#workflow">How it works<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#compare">Compare<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#about"><span class="footer-link-label">About</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#features"><span class="footer-link-label">Features</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#workflow"><span class="footer-link-label">How it works</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#compare"><span class="footer-link-label">Compare</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
     </ul>
   </div>
 
   <div class="footer-section">
     <p class="footer-section-label">RESOURCES</p>
     <ul class="footer-nav-list">
-      <li><a href="#">Shortcut list<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#">Getting started<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#">Roadmap<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#"><span class="footer-link-label">Shortcut list</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#"><span class="footer-link-label">Getting started</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#"><span class="footer-link-label">Roadmap</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
     </ul>
   </div>
 
   <div class="footer-section">
     <p class="footer-section-label">COMMUNITY &amp; SUPPORT</p>
     <ul class="footer-nav-list">
-      <li><a href="https://www.patreon.com/ondas">Patreon<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="https://x.com/ondas_software">𝕏<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="subs/foundation.html">Foundation<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="#">Suggest a feature<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="legal/privacy.html">Privacy<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
-      <li><a href="legal/terms.html">Terms of service<svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="https://www.patreon.com/ondas"><span class="footer-link-label">Patreon</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="https://x.com/ondas_software"><span class="footer-link-label">𝕏</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="subs/foundation.html"><span class="footer-link-label">Foundation</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="#"><span class="footer-link-label">Suggest a feature</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="legal/privacy.html"><span class="footer-link-label">Privacy</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
+      <li><a href="legal/terms.html"><span class="footer-link-label">Terms of service</span><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a></li>
     </ul>
   </div>
 
