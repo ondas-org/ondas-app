@@ -631,7 +631,7 @@ await window._fbCreateAccount(email, password, userName);
 }
 } catch (err) {
 const code = (err && err.code) || '';
-setTimeout(() => showFirebaseError('We couldn\u2019t process this request. Contact support at: <a href="mailto:reply.ondas@gmail.com">reply.ondas@gmail.com</a>'), 800);
+setTimeout(() => showFirebaseError('We couldn\u2019t process this request.<br>Contact support at: reply.ondas@gmail.com'), 800);
 console.error('[pier] Firebase error:', code, err);
 }
 }
