@@ -5,8 +5,13 @@
     "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js":      "sha384-zgcbfcVBtrcOc7CwpMfyGnYBfuol1tUBzdw+qfnzk43mD50+D2shQKuddFaWQfsc"
   }
 }
+</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const SUPABASE_URL = 'https://huwwsuxvehhiwpvwgqzy.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_LCuEFxzVU9ZQLQkmAe4kuw_6tvJUpXp';
+window.supabaseClient = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+if (!window.supabaseClient) console.warn('[ONDAS] Supabase SDK not found — password reset emails disabled.');
 </script><script type="module">import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 const _fbApp = initializeApp({
 apiKey: 'AIzaSyAkM27N-XVt651TUmmzxi1Ms_TMpS0oqzc',
 authDomain: 'ondas-e3003.firebaseapp.com',
@@ -141,8 +146,10 @@ span.style.transform = 'translateY(0)';
 });
 }
 let forgotSent = false;
-document.getElementById('b-forgot').addEventListener('click', async () => {
-if (forgotSent) return;
+let forgotBusy = false;
+const bForgot = document.getElementById('b-forgot');
+bForgot.addEventListener('click', async () => {
+if (forgotSent || forgotBusy) return;
 const email = iEmail.value.trim();
 if (!isValidEmail(email)) {
 eEmail.textContent = 'Enter your email first.';
@@ -150,14 +157,19 @@ eEmail.classList.add('show');
 iEmail.focus();
 return;
 }
+forgotBusy = true;
+bForgot.style.pointerEvents = 'none';
+bForgot.innerHTML = '<span class="btn-spinner" style="width:10px;height:10px;border-width:1.5px;margin-right:5px;"></span>Sending…';
 try {
-await sendPasswordResetEmail(_fbAuth, email);
+if (window.supabaseClient) {
+await window.supabaseClient.functions.invoke('send-password-reset-email', { body: { email } });
+}
 } catch (_) { }
+forgotBusy = false;
 forgotSent = true;
-const btn = document.getElementById('b-forgot');
-revealByLetters(btn, 'Email sent', 'rgba(255,255,255,0.5)');
-btn.style.pointerEvents = 'none';
-btn.style.cursor = 'default';
+revealByLetters(bForgot, 'Email sent', 'rgba(255,255,255,0.5)');
+bForgot.style.pointerEvents = 'none';
+bForgot.style.cursor = 'default';
 });
 function dissolveCard(callback) {
 const STAGGER = 68;
