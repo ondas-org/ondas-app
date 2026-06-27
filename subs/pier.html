@@ -844,6 +844,10 @@ body.macy-veil.phase-final .pier-warning a:hover { color: rgba(255,255,255,0.9);
 }
 
 
+
+.pw-char-overlay{position:absolute;inset:0;display:flex;align-items:center;padding:15px 52px 15px 20px;font-size:15px;font-family:'IBM Plex Mono',monospace;letter-spacing:-0.01em;color:#fff;pointer-events:none;opacity:0;z-index:2;perspective:420px}
+.pw-char-overlay.active{opacity:1}
+.pw-char{display:inline-block;transform-style:preserve-3d;transform-origin:center 60%;will-change:transform,opacity,filter}
 </style>
 </head>
 <body>
@@ -895,6 +899,7 @@ body.macy-veil.phase-final .pier-warning a:hover { color: rgba(255,255,255,0.9);
         <p class="sub">A strong password, made to last.</p>
         <div class="iw">
           <input class="inp" id="i-pw" type="password" placeholder="Create a password" autocomplete="new-password">
+          <div class="pw-char-overlay" id="pw-char-overlay" aria-hidden="true"></div>
           <span class="pw-eye" id="pw-eye" aria-label="Show password">
             <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11c3 4.5 15 4.5 18 0"/><line x1="5" y1="12.8" x2="4.2" y2="16.2"/><line x1="8.5" y1="14.2" x2="8.2" y2="17.8"/><line x1="12" y1="14.8" x2="12" y2="18.5"/><line x1="15.5" y1="14.2" x2="15.8" y2="17.8"/><line x1="19" y1="12.8" x2="19.8" y2="16.2"/></svg>
@@ -1065,6 +1070,34 @@ function transitionTo(next, direction) {
     cur.style.cssText = '';
     step = next;
     renderGuide(next, next);
+    const _note = document.getElementById('already-account-note');
+    if (next >= 1) {
+      // Blur-out the note
+      if (_note) {
+        _note.style.opacity = '0';
+        _note.style.filter = 'blur(10px)';
+        _note.style.transform = 'translateY(6px)';
+        _note.style.pointerEvents = 'none';
+      }
+      // Blur-in the guide
+      guide.style.pointerEvents = '';
+      guide.style.transition = 'opacity 0.6s cubic-bezier(0.4,0,0.2,1), filter 0.6s cubic-bezier(0.4,0,0.2,1)';
+      guide.style.filter = 'blur(0px)';
+      guide.style.opacity = '1';
+    } else {
+      // Blur-in the note
+      if (_note) {
+        _note.style.opacity = '1';
+        _note.style.filter = 'blur(0px)';
+        _note.style.transform = 'translateY(0px)';
+        _note.style.pointerEvents = 'auto';
+      }
+      // Blur-out the guide
+      guide.style.transition = 'opacity 0.4s cubic-bezier(0.4,0,0.2,1), filter 0.4s cubic-bezier(0.4,0,0.2,1)';
+      guide.style.filter = 'blur(10px)';
+      guide.style.opacity = '0';
+      guide.style.pointerEvents = 'none';
+    }
     focusStep(next);
   }, 300);
 }
@@ -1085,7 +1118,9 @@ function watchBtn(inpId, btnId, fn) {
   inp.addEventListener('input', () => btn.classList.toggle('on', fn(inp.value)));
 }
 
-renderGuide(0, 0);
+guide.style.opacity = '0';
+guide.style.filter = 'blur(10px)';
+guide.style.pointerEvents = 'none';
 watchBtn('i-email', 'b-email', v => v.trim().length > 3);
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -1163,10 +1198,63 @@ function setEyeState(visible) {
   document.getElementById('eye-closed').style.display = visible ? 'none' : '';
   document.getElementById('pw-eye').setAttribute('aria-label', visible ? 'Hide password' : 'Show password');
 }
+const pwOverlay = document.getElementById('pw-char-overlay');
+let pwAnimToken = 0;
+function animatePwChars(fromChars, toChars, onDone) {
+  const token = ++pwAnimToken;
+  const FLIP_MS = 320;
+  const STAGGER = 26;
+  pwOverlay.innerHTML = '';
+  const spans = fromChars.map(ch => {
+    const span = document.createElement('span');
+    span.className = 'pw-char';
+    span.textContent = ch;
+    pwOverlay.appendChild(span);
+    return span;
+  });
+  spans.forEach((span, i) => {
+    span.style.transition = 'none';
+    span.style.transform = 'rotateX(0deg) scale(1)';
+    span.style.opacity = '1';
+    span.style.filter = 'blur(0)';
+    setTimeout(() => {
+      if (pwAnimToken !== token) return;
+      span.style.transition = `transform ${FLIP_MS}ms cubic-bezier(0.4,0,0.2,1), opacity ${FLIP_MS * 0.55}ms ease, filter ${FLIP_MS * 0.55}ms ease`;
+      span.style.transform = 'rotateX(90deg) scale(0.55)';
+      span.style.opacity = '0.1';
+      span.style.filter = 'blur(2px)';
+      setTimeout(() => {
+        if (pwAnimToken !== token) return;
+        span.textContent = toChars[i];
+        span.style.transition = `transform ${FLIP_MS}ms cubic-bezier(0.34,1.56,0.64,1), opacity ${FLIP_MS * 0.6}ms ease, filter ${FLIP_MS * 0.6}ms ease`;
+        span.style.transform = 'rotateX(0deg) scale(1)';
+        span.style.opacity = '1';
+        span.style.filter = 'blur(0)';
+      }, FLIP_MS * 0.5);
+    }, i * STAGGER);
+  });
+  const total = (spans.length - 1) * STAGGER + FLIP_MS * 1.5;
+  setTimeout(() => { if (pwAnimToken === token) onDone(); }, total);
+}
 document.getElementById('pw-eye').addEventListener('click', () => {
   const showing = iPw.type === 'text';
-  iPw.type = showing ? 'password' : 'text';
+  const value = iPw.value;
   setEyeState(!showing);
+  if (!value) {
+    iPw.type = showing ? 'password' : 'text';
+    return;
+  }
+  const fromChars = value.split('').map(ch => showing ? ch : '•');
+  const toChars   = value.split('').map(ch => showing ? '•' : ch);
+  iPw.style.color = 'transparent';
+  iPw.style.caretColor = 'transparent';
+  pwOverlay.classList.add('active');
+  animatePwChars(fromChars, toChars, () => {
+    iPw.type = showing ? 'password' : 'text';
+    pwOverlay.classList.remove('active');
+    iPw.style.color = '';
+    iPw.style.caretColor = '';
+  });
 });
 
 function animatePasswordReveal(finalPw) {
@@ -1400,7 +1488,8 @@ document.getElementById('b-date').addEventListener('click', () => {
     document.getElementById('underage-detail').innerHTML =
       `${regLaw} Our <a href="legal/terms" target="_blank" style="color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.22);padding-bottom:1px;">Terms of Service</a> and <a href="legal/privacy" target="_blank" style="color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.22);padding-bottom:1px;">Privacy Policy</a> prohibit us from creating accounts or collecting personal information for users below this threshold. We are not able to complete registration at this time.`;
 
-    guide.style.transition = 'opacity 0.35s ease';
+    guide.style.transition = 'opacity 0.35s ease, filter 0.35s ease';
+    guide.style.filter     = 'blur(10px)';
     guide.style.opacity    = '0';
     setTimeout(() => { guide.style.display = 'none'; }, 350);
 
@@ -1502,7 +1591,8 @@ function showFinal() {
   PHASE_CLASS.forEach(c => c && document.body.classList.remove(c));
   document.body.classList.add('phase-final');
 
-  guide.style.transition = 'opacity 0.7s ease';
+  guide.style.transition = 'opacity 0.7s ease, filter 0.7s ease';
+  guide.style.filter     = 'blur(10px)';
   guide.style.opacity    = '0';
   setTimeout(() => { guide.style.display = 'none'; }, 700);
 
@@ -1707,5 +1797,6 @@ setTimeout(() => document.getElementById('i-email').focus(), 350);
 <script>
 document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
+<p id="already-account-note" style="position:fixed;bottom:32px;left:0;right:0;text-align:center;font-size:13px;color:rgba(255,255,255,0.35);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;z-index:10000;pointer-events:auto;opacity:1;filter:blur(0px);transform:translateY(0px);transition:opacity 0.5s cubic-bezier(0.4,0,0.2,1),filter 0.5s cubic-bezier(0.4,0,0.2,1),transform 0.5s cubic-bezier(0.4,0,0.2,1);">Already have one? <a href="sign-in.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;transition:color 0.2s ease;" onmouseover="this.style.color='rgba(255,255,255,0.65)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Sign in</a></p>
 </body>
 </html>
