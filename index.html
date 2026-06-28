@@ -352,29 +352,23 @@ loginCtx.fill();
 if (loginAnimating) requestAnimationFrame(loginDraw);
 }</script>
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-
-const _fbApp = initializeApp({
-apiKey: 'AIzaSyAkM27N-XVt651TUmmzxi1Ms_TMpS0oqzc',
-authDomain: 'ondas-e3003.firebaseapp.com',
-projectId: 'ondas-e3003',
-storageBucket: 'ondas-e3003.firebasestorage.app',
-messagingSenderId: '89113983342',
-appId: '1:89113983342:web:277f7bb3f048e23b47e97f',
-});
-const _fbAuth = getAuth(_fbApp);
+const SUPABASE_URL = 'https://huwwsuxvehhiwpvwgqzy.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_LCuEFxzVU9ZQLQkmAe4kuw_6tvJUpXp';
+const supabaseAuth = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
 const googleBtn = document.getElementById('lv-google-btn');
-if (googleBtn) {
+if (googleBtn && supabaseAuth) {
 googleBtn.addEventListener('click', async () => {
 googleBtn.style.pointerEvents = 'none';
-const provider = new GoogleAuthProvider();
 try {
-await signInWithPopup(_fbAuth, provider);
-window.location.href = '/boat/editor.html';
+const { error } = await supabaseAuth.auth.signInWithOAuth({
+provider: 'google',
+options: { redirectTo: `${window.location.origin}/boat/editor.html` }
+});
+if (error) throw error;
+// browser is redirected to Google by the call above; nothing else to do here
 } catch (err) {
-console.error('[Google sign-in] error:', err.code, err.message);
+console.error('[Google sign-in] error:', err.message);
 googleBtn.style.pointerEvents = '';
 }
 });
