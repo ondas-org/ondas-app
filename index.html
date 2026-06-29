@@ -376,7 +376,10 @@ const xBtn = document.getElementById('lv-x-btn');
 if (xBtn && supabaseAuth) {
 xBtn.addEventListener('click', async (e) => {
 e.preventDefault();
-await supabaseAuth.auth.signInWithOAuth({ provider: 'x' });
+await supabaseAuth.auth.signInWithOAuth({
+provider: 'x',
+options: { redirectTo: 'https://ondas.lat/boat/editor.html' }
+});
 });
 }
 </script>
